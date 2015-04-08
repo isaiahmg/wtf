@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>wrtranslate.rb(1) - translate one or more terms to another language</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#SYNOPSIS">SYNOPSIS</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#FILES">FILES</a>
+    <a href="#OPTIONS">OPTIONS</a>
+    <a href="#EXAMPLES">EXAMPLES</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>wrtranslate.rb(1)</li>
+    <li class='tc'></li>
+    <li class='tr'>wrtranslate.rb(1)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>wrtranslate.rb</code> - <span class="man-whatis">translate one or more terms to another language</span>
+</p>
+
+<h2 id="SYNOPSIS">SYNOPSIS</h2>
+
+<p><code>wrtranslate.rb</code> <var>term</var><br />
+<code>wrtranslate.rb</code> <code>--delimiter delimiter</code> <code>-d dictionary</code>|<code>--dictionary dictionary</code> <code>-j joiner</code>|<code>--joiner joiner</code> <code>-k, key</code> <var>term</var><br />
+<code>wrtranslate.rb</code> <code>-s</code>|<code>--switch-order</code> <var>term</var></p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p><strong>wrtranslate.rb</strong> is a simple command-line tool for accessing
+wordreference.com dictionaries and translating a single word
+or an entire list of terms in a format that can easily be imported
+into many flash card programs.</p>
+
+<p>My default, <code>wrtranslate.rb</code> uses the Spanish to English
+dictionary (esen) and returns all possible translations
+for the searched for term.</p>
+
+<p>By default, <code>wrtranslate.rb</code> will use your wordreference.com
+api key in <code>~/.wrtranslate.rc</code>, however, you can override either
+the api key or the dictionary used (or both) via the <code>-k</code> and
+<code>-d</code> flags, respectively.</p>
+
+<h2 id="FILES">FILES</h2>
+
+<p><code>~/.wrtranslate.rc</code> is used for authentication if <code>-k</code> is omitted.</p>
+
+<h2 id="OPTIONS">OPTIONS</h2>
+
+<pre><code>* `-n`, `--num-definitions`:
+    Return up to n number of translations for term
+* `-k KEY`:
+    wordreference.com api key
+* `-d DICTIONARY`, `--dictionary DICTIONARY`:
+    Dictionary to use for translation. Dictionaries are described by two
+    two-letter abbreviations for the language the term is currently in
+    followed by the two-letter abbreviation the term should be translated
+    to. Currently WordReference.com only supports translationsto and from
+    English. Here is a listing of the available languages and their
+    two-letter abbreviations:
+
+    Language    Abbreviation
+    Arabic      ar
+    Chinese     zh
+    Czech       cz
+    English     en
+    French      fr
+    Greek       gr
+    Italian     it
+    Japanese    ja
+    Korean      ko
+    Polish      pl
+    Portuguese  pt
+    Romanian    ro
+    Spanish     es
+    Turkish     tr
+</code></pre>
+
+<h2 id="EXAMPLES">EXAMPLES</h2>
+
+<p>Translate the term "vaca" from Spanish to English:</p>
+
+<pre><code>$ wrtranslate.rb vaca
+</code></pre>
+
+<p>Translate the term "cow" from English to French:</p>
+
+<pre><code>$ wrtranslate.rb -d enfr cow
+</code></pre>
+
+<p>Retrieve the first two translations of "vaca":</p>
+
+<pre><code>$ db_backup.rb -n 2 vaca
+</code></pre>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'></li>
+    <li class='tc'>February 2013</li>
+    <li class='tr'>wrtranslate.rb(1)</li>
+  </ol>
+
+  </div>
+</body>
+</html>

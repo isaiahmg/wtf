@@ -1,0 +1,85 @@
+wrtranslate.rb(1) -- translate one or more terms to another language
+====================================================================
+
+## SYNOPSIS
+
+`wrtranslate.rb` <term><br>
+`wrtranslate.rb` `--delimiter delimiter` `-d`|`--dictionary dictionary` `--format format` `-j`|`--joiner joiner` `-k`|`--api-key api-key` <term><br>
+`wrtranslate.rb` `-s`|`--switch-order` <term>
+
+## DESCRIPTION
+
+**wrtranslate.rb** is a simple command-line tool for accessing
+wordreference.com dictionaries and translating a single word
+or an entire list of terms in a format that can easily be imported
+into many flash card programs.
+
+My default, `wrtranslate.rb` uses the Spanish to English
+dictionary (esen) and returns all possible translations
+for the searched for term.
+
+By default, `wrtranslate.rb` will use your wordreference.com
+api key in `~/.wrtranslate.rc`, however, you can override either
+the api key or the dictionary used (or both) via the `-k` and 
+`-d` flags, respectively.
+
+## FILES
+
+`~/.wrtranslate.rc` is used for authentication if `-k` is omitted.
+
+## OPTIONS
+
+	* `--delimiter DELIMITER`:
+		Used to specify delimiter between term and translation when
+		generating CSV file
+	* `-d DICTIONARY`, `--dictionary DICTIONARY`:
+		Dictionary to use for translation. Dictionaries are described by two
+		two-letter abbreviations for the language the term is currently in
+		followed by the two-letter abbreviation the term should be translated
+		to. Currently WordReference.com only supports translationsto and from
+		English. Here is a listing of the available languages and their
+		two-letter abbreviations:
+		
+		Language    Abbreviation
+		Arabic      ar
+		Chinese     zh
+		Czech       cz
+		English     en
+		French      fr
+		Greek       gr
+		Italian     it
+		Japanese    ja
+		Korean      ko
+		Polish      pl
+		Portuguese  pt
+		Romanian    ro
+		Spanish     es
+		Turkish     tr
+	* `--format FORMAT`:
+		Specify <pretty> or <csv>. Defaults to pretty if outputting
+		to the standard out, csv otherwise.
+	* `-j`, `--joiner JOINER`:
+		Return up to n number of translations for term
+	* `-k`, `--api-key KEY`:
+		wordreference.com api key
+	* `-s`, `--switch`:
+		Switch order in which term and translation are displayed. Displays
+		original term before the translation by default.		
+		
+## EXAMPLES
+
+Translate the term "vaca" from Spanish to English:
+	
+	$ wrtranslate.rb vaca
+
+Translate the term "cow" from English to French:
+	
+	$ wrtranslate.rb -d enfr cow
+
+Display the translation "vaca" before it is displayed:
+
+	$ wrtranslate.rb -s vaca
+
+Use "|" between translation options instead of the default ", ":
+
+	$ wrtranslate.rb -j"|" vaca

@@ -1,0 +1,102 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "WRTRANSLATE\.RB" "1" "February 2013" "" ""
+.
+.SH "NAME"
+\fBwrtranslate\.rb\fR \- translate one or more terms to another language
+.
+.SH "SYNOPSIS"
+\fBwrtranslate\.rb\fR \fIterm\fR
+.
+.br
+\fBwrtranslate\.rb\fR \fB\-\-delimiter delimiter\fR \fB\-d dictionary\fR|\fB\-\-dictionary dictionary\fR \fB\-j joiner\fR|\fB\-\-joiner joiner\fR \fB\-k, key\fR \fIterm\fR
+.
+.br
+\fBwrtranslate\.rb\fR \fB\-s\fR|\fB\-\-switch\-order\fR \fIterm\fR
+.
+.SH "DESCRIPTION"
+\fBwrtranslate\.rb\fR is a simple command\-line tool for accessing wordreference\.com dictionaries and translating a single word or an entire list of terms in a format that can easily be imported into many flash card programs\.
+.
+.P
+My default, \fBwrtranslate\.rb\fR uses the Spanish to English dictionary (esen) and returns all possible translations for the searched for term\.
+.
+.P
+By default, \fBwrtranslate\.rb\fR will use your wordreference\.com api key in \fB~/\.wrtranslate\.rc\fR, however, you can override either the api key or the dictionary used (or both) via the \fB\-k\fR and \fB\-d\fR flags, respectively\.
+.
+.SH "FILES"
+\fB~/\.wrtranslate\.rc\fR is used for authentication if \fB\-k\fR is omitted\.
+.
+.SH "OPTIONS"
+.
+.nf
+
+* `\-n`, `\-\-num\-definitions`:
+    Return up to n number of translations for term
+* `\-k KEY`:
+    wordreference\.com api key
+* `\-d DICTIONARY`, `\-\-dictionary DICTIONARY`:
+    Dictionary to use for translation\. Dictionaries are described by two
+    two\-letter abbreviations for the language the term is currently in
+    followed by the two\-letter abbreviation the term should be translated
+    to\. Currently WordReference\.com only supports translationsto and from
+    English\. Here is a listing of the available languages and their
+    two\-letter abbreviations:
+
+    Language    Abbreviation
+    Arabic      ar
+    Chinese     zh
+    Czech       cz
+    English     en
+    French      fr
+    Greek       gr
+    Italian     it
+    Japanese    ja
+    Korean      ko
+    Polish      pl
+    Portuguese  pt
+    Romanian    ro
+    Spanish     es
+    Turkish     tr
+.
+.fi
+.
+.SH "EXAMPLES"
+Translate the term "vaca" from Spanish to English:
+.
+.IP "" 4
+.
+.nf
+
+$ wrtranslate\.rb vaca
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Translate the term "cow" from English to French:
+.
+.IP "" 4
+.
+.nf
+
+$ wrtranslate\.rb \-d enfr cow
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Retrieve the first two translations of "vaca":
+.
+.IP "" 4
+.
+.nf
+
+$ db_backup\.rb \-n 2 vaca
+.
+.fi
+.
+.IP "" 0
+
