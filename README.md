@@ -10,7 +10,7 @@ Install gem: navigate to this folder from the command line and type
 
 Run locally without installing gem as spelled out in the usage section below.
 
-An API key must be obtained from wordreference.com and included in the configuration file ~/.wordtranslationfast.rc.yml or supplied as an option when running the command.
+An API key must be obtained from [wordreference.com](http://www.wordreference.com/docs/api.aspx) and included in the configuration file ~/.wordtranslationfast.rc.yml or supplied as an option when running the command.
 
 ## Usage
 
