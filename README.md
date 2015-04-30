@@ -6,7 +6,7 @@ Command line access to wordreference.com translations
 
 Install gem: navigate to this folder from the command line and type
 
-`gem install pkg/wtf-0.2.gem`
+`gem install pkg/wtf-0.3.gem`
 
 Run locally without installing gem as spelled out in the usage section below.
 
